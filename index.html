@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEVOLAWALE</title>
+    <title>DevOlawale</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://api.fontshare.com/v2/css?f[]=media-sans-extended@400,700,600&display=swap" rel="stylesheet">
     <script>
@@ -21,8 +21,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <style>
         .outline-text {
-            -webkit-text-stroke: 1px black;
-            text-stroke: 1px black;
+            -webkit-text-stroke: 1px white;
+            text-stroke: 1px white;
         }
 
         /* Loading Screen Styles */
@@ -32,7 +32,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom right, #FFFCEB, #FFF8E0, #FFF4D5);
+            background: linear-gradient(to bottom right, #106EBE, #0B9CBE, #0FFCBE);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -43,7 +43,7 @@
         .loader {
             width: 48px;
             height: 48px;
-            border: 3px solid #000000;
+            border: 3px solid #FFFFFF;
             border-radius: 50%;
             display: inline-block;
             position: relative;
@@ -62,7 +62,7 @@
             height: 40px;
             border-radius: 50%;
             border: 3px solid transparent;
-            border-bottom-color: #000000;
+            border-bottom-color: #FFFFFF;
         }
 
         @keyframes rotation {
@@ -78,7 +78,7 @@
         /* Typewriter effect */
         .typewriter {
             overflow: hidden;
-            border-right: 3px solid black;
+            border-right: 3px solid white;
             white-space: nowrap;
             margin: 0 auto;
             animation: 
@@ -88,12 +88,12 @@
 
         @keyframes typing {
             0%, 100% { width: 0 }
-            30%, 90% { width: 100% }
+            10%, 90% { width: 100% }
         }
 
         @keyframes blink-caret {
             from, to { border-color: transparent }
-            50% { border-color: black }
+            50% { border-color: white }
         }
 
         /* Update mobile menu styles */
@@ -103,9 +103,9 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 300px; /* Set specific width for sidebar */
+            width: 300px;
             height: 100vh;
-            background: linear-gradient(to bottom right, #FFFCEB, #FFF8E0, #FFF4D5);
+            background: linear-gradient(to bottom right, #106EBE, #0B9CBE, #0FFCBE);
             z-index: 1000;
             padding: 6rem 2rem;
             border-right: 1px solid rgba(0, 0, 0, 0.1);
@@ -167,64 +167,158 @@
                 transform: translate(-50%, -50%) scale(1.1) rotate(5deg);
             }
         }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes float-delay {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-float-delay {
+            animation: float 3s ease-in-out infinite;
+            animation-delay: 1.5s;
+        }
+
+        .animate-spin-slow {
+            animation: spin 20s linear infinite;
+        }
+
+        /* Typing effect */
+        .typing-text {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 3px solid #0FFCBE;
+            white-space: nowrap;
+            margin: 0;
+            animation: 
+                typing 8s steps(40, end) infinite,
+                blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            0%, 100% { width: 0 }
+            10%, 90% { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #0FFCBE }
+        }
+
+        .animate-float-delay-2 {
+            animation: float 3s ease-in-out infinite;
+            animation-delay: 1s;
+        }
     </style>
 </head>
-<body class="bg-gradient-to-br from-[#FFFCEB] via-[#FFF8E0] to-[#FFF4D5]">
+<body class="bg-gradient-to-br from-[#106EBE] via-[#0B9CBE] to-[#0FFCBE] min-h-screen">
     <div class="loader-wrapper">
         <span class="loader"></span>
     </div>
 
-    <nav class="absolute w-full z-10 shadow-none font-media-sans py-8" data-aos="fade-down" data-aos-duration="1000">
-        <div class="max-w-7xl mx-auto px-8">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 font-media-sans py-6" data-aos="fade-down" data-aos-duration="1000">
+        <!-- Nav Background with Blur -->
+        <div class="absolute inset-0 bg-black/10 backdrop-blur-md border-b border-white/10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 md:px-8 relative">
             <div class="flex justify-between items-center">
                 <!-- Logo -->
                 <div class="flex-shrink-0">
-                    <a href="#" class="flex items-center">
-                        <img src="assets/logo.png" alt="" class="w-10 h-10">
+                    <a href="#" class="flex items-center space-x-3 group">
+                        <!-- <img src="assets/logo.png" alt="Logo" class="w-10 h-10 transform transition-transform group-hover:scale-110"> -->
+                        <span class="text-white font-bold text-xl tracking-wider hidden md:block">
+                            DEVO<span class="text-[#0FFCBE]">LAWALE</span>
+                        </span>
                     </a>
                 </div>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-12">
-                    <a href="#" class="text-black hover:text-gray-600 text-sm font-medium tracking-wider">HOME</a>
-                    <a href="#about" class="text-black hover:text-gray-600 text-sm font-medium tracking-wider">ABOUT</a>
-                    <a href="#services" class="text-black hover:text-gray-600 text-sm font-medium tracking-wider">SERVICES</a>
-                    <a href="#projects" class="text-black hover:text-gray-600 text-sm font-medium tracking-wider">PROJECTS</a>
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="#" class="relative px-5 py-2 text-white group">
+                        <span class="relative z-10 text-sm font-medium tracking-wider group-hover:text-[#0FFCBE] transition-colors duration-300">HOME</span>
+                        <span class="absolute inset-0 bg-white/0 group-hover:bg-white/5 rounded-full transition-colors duration-300"></span>
+                    </a>
+                    <a href="#about" class="relative px-5 py-2 text-white group">
+                        <span class="relative z-10 text-sm font-medium tracking-wider group-hover:text-[#0FFCBE] transition-colors duration-300">ABOUT</span>
+                        <span class="absolute inset-0 bg-white/0 group-hover:bg-white/5 rounded-full transition-colors duration-300"></span>
+                    </a>
+                    <a href="#services" class="relative px-5 py-2 text-white group">
+                        <span class="relative z-10 text-sm font-medium tracking-wider group-hover:text-[#0FFCBE] transition-colors duration-300">SERVICES</span>
+                        <span class="absolute inset-0 bg-white/0 group-hover:bg-white/5 rounded-full transition-colors duration-300"></span>
+                    </a>
+                    <a href="#projects" class="relative px-5 py-2 text-white group">
+                        <span class="relative z-10 text-sm font-medium tracking-wider group-hover:text-[#0FFCBE] transition-colors duration-300">PROJECTS</span>
+                        <span class="absolute inset-0 bg-white/0 group-hover:bg-white/5 rounded-full transition-colors duration-300"></span>
+                    </a>
                 </div>
 
                 <!-- Hire Me Button (Desktop) -->
                 <div class="hidden md:block">
-                    <a href="#" class="bg-black text-white px-6 py-3 rounded-full text-sm font-medium tracking-wider hover:bg-gray-800 transition duration-300">
+                    <a href="#contact" class="group relative inline-flex items-center">
+                        <span class="absolute inset-0 bg-[#0FFCBE] rounded-full blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></span>
+                        <span class="relative bg-[#0FFCBE] text-black px-6 py-3 rounded-full text-sm font-medium tracking-wider hover:bg-[#0FFCBE]/90 transition-all duration-300 flex items-center gap-2">
                         HIRE ME
+                            <svg class="w-4 h-4 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </span>
                     </a>
                 </div>
 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button type="button" class="text-black hover:text-gray-600 menu-button" id="mobile-menu-button">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
+                    <button type="button" class="relative group p-2" id="mobile-menu-button">
+                        <div class="relative flex overflow-hidden items-center justify-center w-8 h-8">
+                            <div class="flex flex-col justify-between w-6 h-5 transform transition-all duration-300 origin-center overflow-hidden group-hover:text-[#0FFCBE]">
+                                <div class="bg-white h-[2px] w-6 transform transition-all duration-300 origin-left group-hover:bg-[#0FFCBE]"></div>
+                                <div class="bg-white h-[2px] w-6 transform transition-all duration-300 group-hover:bg-[#0FFCBE]"></div>
+                                <div class="bg-white h-[2px] w-6 transform transition-all duration-300 origin-left group-hover:bg-[#0FFCBE]"></div>
+                            </div>
+                        </div>
                     </button>
+                </div>
                 </div>
             </div>
 
             <!-- Mobile Menu -->
             <div class="mobile-menu md:hidden">
-                <button class="close-button text-black hover:text-gray-600" id="close-menu-button">
+            <button class="close-button text-[#0FFCBE] hover:text-[#0FFCBE]/80 p-2" id="close-menu-button">
                     <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
-                <div class="flex flex-col space-y-8">
-                    <a href="#" class="text-black hover:text-gray-600 text-lg font-medium tracking-wider">HOME</a>
-                    <a href="#about" class="text-black hover:text-gray-600 text-lg font-medium tracking-wider">ABOUT</a>
-                    <a href="#services" class="text-black hover:text-gray-600 text-lg font-medium tracking-wider">SERVICES</a>
-                    <a href="#projects" class="text-black hover:text-gray-600 text-lg font-medium tracking-wider">PROJECTS</a>
-                    <a href="#" class="bg-black text-white px-6 py-3 rounded-full text-sm font-medium tracking-wider hover:bg-gray-800 transition duration-300">
+            <div class="flex flex-col space-y-6 mt-8">
+                <a href="#" class="text-white hover:text-[#0FFCBE] text-lg font-medium tracking-wider transition-colors duration-300 flex items-center gap-3">
+                    <span class="w-2 h-2 bg-[#0FFCBE]/50 rounded-full"></span>
+                    HOME
+                </a>
+                <a href="#about" class="text-white hover:text-[#0FFCBE] text-lg font-medium tracking-wider transition-colors duration-300 flex items-center gap-3">
+                    <span class="w-2 h-2 bg-[#0FFCBE]/50 rounded-full"></span>
+                    ABOUT
+                </a>
+                <a href="#services" class="text-white hover:text-[#0FFCBE] text-lg font-medium tracking-wider transition-colors duration-300 flex items-center gap-3">
+                    <span class="w-2 h-2 bg-[#0FFCBE]/50 rounded-full"></span>
+                    SERVICES
+                </a>
+                <a href="#projects" class="text-white hover:text-[#0FFCBE] text-lg font-medium tracking-wider transition-colors duration-300 flex items-center gap-3">
+                    <span class="w-2 h-2 bg-[#0FFCBE]/50 rounded-full"></span>
+                    PROJECTS
+                </a>
+                <a href="#contact" class="inline-flex items-center bg-[#0FFCBE] text-black px-6 py-3 rounded-full text-sm font-medium tracking-wider hover:bg-[#0FFCBE]/80 transition-all duration-300 gap-2 w-fit">
                         HIRE ME
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
                     </a>
-                </div>
             </div>
         </div>
     </nav>
@@ -233,194 +327,369 @@
     <div class="menu-overlay md:hidden"></div>
 
     <!-- Hero Section -->
-    <div class="min-h-screen flex items-start justify-center font-media-sans pt-32 md:pt-48">
-        <div class="text-center px-4 md:px-0">
-            <p class="text-lg md:text-xl text-black/75 max-w-2xl mx-auto mb-8" data-aos="fade-right" data-aos-duration="1000">
-                my name is Olawale and i am a freelance
-            </p>
-
-            <div class="relative z-30">
-                <h1 class="text-6xl md:text-[10rem] font-bold text-black leading-none" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
-                    Front-End
-                </h1>
-                <h1 class="text-6xl md:text-[10rem] font-bold outline-text text-transparent mb-4 leading-none typewriter" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="400">
-                    Web Developer
-                </h1>
-            </div>
-             
-            <div class="absolute top-[15%] md:top-[25%] left-0 w-full h-full flex items-center justify-center z-20">
-                <div class="blob"></div>
-                <img src="assets/profile.png" alt="" class="w-2/3 md:w-1/4 mx-auto -mt-20 md:mt-0 relative z-30">
-            </div>
+    <div class="min-h-screen relative overflow-hidden font-media-sans">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#0FFCBE]/20 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#106EBE]/20 rounded-full blur-3xl"></div>
         </div>
-    </div>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 md:py-32 font-media-sans" data-aos="fade-up" data-aos-duration="1000">
-        <div class="max-w-7xl mx-auto px-4 md:px-8">
-            <!-- Section Header -->
-            <div class="text-center mb-12 md:mb-20">
-                <span class="text-sm font-medium tracking-wider" data-aos="fade-right" data-aos-duration="800">ABOUT ME</span>
-                <h2 class="text-5xl md:text-7xl font-bold mt-4" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">Who I Am</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
-                <!-- Left Column - Content -->
-                <div class="space-y-8">
-                    <p class="text-xl leading-relaxed" data-aos="fade-right" data-aos-duration="800">
-                        I'm a passionate Front-End Developer based in Nigeria, focused on creating clean & user‑friendly experiences.
-                    </p>
-                    <p class="text-lg text-black/70 leading-relaxed" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
-                        I am passionate about building excellent software that improves the lives of those around me. I specialize in creating software for clients ranging from individuals and small-businesses all the way to large enterprise corporations.
+        <!-- Content Container -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pt-32 md:pt-40">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Left Column - Text Content -->
+                <div class="space-y-8 text-center md:text-left" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full">
+                        <p class="text-[#0FFCBE] text-sm font-medium tracking-wider">FRONTEND DEVELOPER</p>
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight">
+                        <span class="typing-text">Going Digital ?</span>
+                        <br>
+                        <span class="text-[#0FFCBE]">Let's Talk</span>
+                    </h1>
+                    
+                    <p class="text-lg md:text-xl text-white/70 max-w-lg">
+                        Hi, I'm Olawale. I help businesses and individuals grow by building amazing and functional web experiences.
                     </p>
                     
-                    <!-- Skills Grid -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 border-t border-black/10 pt-16">
-                        <div class="p-6 rounded-lg bg-black/5 hover:bg-black/10 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-xl group">
-                            <h3 class="text-xl font-bold mb-6 flex items-center">
-                                <svg class="w-5 h-5 mr-3 transform transition-transform duration-500 group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                </svg>
-                                Frontend
-                            </h3>
-                            <ul class="space-y-3">
-                                <li class="flex items-center text-sm text-black/70 transform transition-transform duration-300 hover:translate-x-2">
-                                    <span class="w-2 h-2 bg-black rounded-full mr-3 transition-transform duration-300 group-hover:scale-125"></span>
-                                    HTML/CSS
-                                </li>
-                                <li class="flex items-center text-sm text-black/70 transform transition-transform duration-300 hover:translate-x-2">
-                                    <span class="w-2 h-2 bg-black rounded-full mr-3 transition-transform duration-300 group-hover:scale-125"></span>
-                                    JavaScript
-                                </li>
-                                <li class="flex items-center text-sm text-black/70 transform transition-transform duration-300 hover:translate-x-2">
-                                    <span class="w-2 h-2 bg-black rounded-full mr-3 transition-transform duration-300 group-hover:scale-125"></span>
-                                    React.js
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="flex flex-col md:flex-row gap-4 md:gap-6">
+                        <a href="#projects" class="bg-[#0FFCBE] text-black px-8 py-4 rounded-full text-sm font-medium tracking-wider hover:bg-[#0FFCBE]/80 transition-all transform hover:scale-105">
+                            VIEW MY WORK
+                        </a>
+                        <a href="#contact" class="border-2 border-white/20 text-white px-8 py-4 rounded-full text-sm font-medium tracking-wider hover:bg-white/10 transition-all transform hover:scale-105">
+                            CONTACT ME
+                        </a>
+                    </div>
 
-                        <div class="p-6 rounded-lg bg-black/5 hover:bg-black/10 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-xl group">
-                            <h3 class="text-xl font-bold mb-6 flex items-center">
-                                <svg class="w-5 h-5 mr-3 transform transition-transform duration-500 group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
-                                </svg>
-                                Tools
-                            </h3>
-                            <ul class="space-y-3">
-                                <li class="flex items-center text-sm text-black/70 transform transition-transform duration-300 hover:translate-x-2">
-                                    <span class="w-2 h-2 bg-black rounded-full mr-3 transition-transform duration-300 group-hover:scale-125"></span>
-                                    Git
-                                </li>
-                                <li class="flex items-center text-sm text-black/70 transform transition-transform duration-300 hover:translate-x-2">
-                                    <span class="w-2 h-2 bg-black rounded-full mr-3 transition-transform duration-300 group-hover:scale-125"></span>
-                                    Figma
-                                </li>
-                                <li class="flex items-center text-sm text-black/70 transform transition-transform duration-300 hover:translate-x-2">
-                                    <span class="w-2 h-2 bg-black rounded-full mr-3 transition-transform duration-300 group-hover:scale-125"></span>
-                                    VS Code
-                                </li>
-                            </ul>
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-8 pt-8 border-t border-white/10">
+                        <div>
+                            <h3 class="text-3xl font-bold text-[#0FFCBE]">1+</h3>
+                            <p class="text-sm text-white/70">Years Experience</p>
                         </div>
-
-                        <div class="p-6 rounded-lg bg-black/5 hover:bg-black/10 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-xl group">
-                            <h3 class="text-xl font-bold mb-6 flex items-center">
-                                <svg class="w-5 h-5 mr-3 transform transition-transform duration-500 group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                                </svg>
-                                Design
-                            </h3>
-                            <ul class="space-y-3">
-                                <li class="flex items-center text-sm text-black/70 transform transition-transform duration-300 hover:translate-x-2">
-                                    <span class="w-2 h-2 bg-black rounded-full mr-3 transition-transform duration-300 group-hover:scale-125"></span>
-                                    Tailwind
-                                </li>
-                                <li class="flex items-center text-sm text-black/70 transform transition-transform duration-300 hover:translate-x-2">
-                                    <span class="w-2 h-2 bg-black rounded-full mr-3 transition-transform duration-300 group-hover:scale-125"></span>
-                                    UI/UX
-                                </li>
-                                <li class="flex items-center text-sm text-black/70 transform transition-transform duration-300 hover:translate-x-2">
-                                    <span class="w-2 h-2 bg-black rounded-full mr-3 transition-transform duration-300 group-hover:scale-125"></span>
-                                    Responsive
-                                </li>
-                            </ul>
+                        <div>
+                            <h3 class="text-3xl font-bold text-[#0FFCBE]">10+</h3>
+                            <p class="text-sm text-white/70">Projects Completed</p>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold text-[#0FFCBE]">3+</h3>
+                            <p class="text-sm text-white/70">Happy Clients</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Right Column - Image -->
-                <div class="relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                    <!-- Main Image Container -->
-                    <div class="relative h-[700px] w-full group">
-                        <!-- Background Shape -->
-                        <div class="absolute right-0 top-0 w-[90%] h-full bg-black rounded-lg transition-transform duration-500 group-hover:translate-x-2"></div>
+                <div class="relative" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="relative aspect-square">
+                        <!-- Decorative Circle -->
+                        <div class="absolute inset-0 border-2 border-[#0FFCBE]/30 rounded-full animate-spin-slow"></div>
                         
-                        <!-- Image -->
-                        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-[95%] h-[600px] overflow-hidden rounded-lg transition-transform duration-500 group-hover:-translate-x-2">
-                            <img src="assets/profile.png" alt="About Me" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <!-- Image Container -->
+                        <div class="absolute inset-4 overflow-hidden rounded-full border-2 border-white/10 bg-gradient-to-br from-white/10 to-transparent backdrop-blur-sm">
+                            <img src="assets/profile.png" alt="Profile" class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500">
                         </div>
-                        
-                        <!-- Decorative Elements -->
-                        <div class="absolute -left-6 -bottom-6 w-32 h-32 border-2 border-black rounded-lg transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2"></div>
-                        <div class="absolute -right-6 -top-6 w-32 h-32 border-2 border-black rounded-lg transition-transform duration-500 group-hover:-translate-x-2 group-hover:-translate-y-2"></div>
+            </div>
+             
+                    <!-- Floating Tech Icons -->
+                    <div class="absolute -right-4 top-1/4 bg-white/10 backdrop-blur-sm p-4 rounded-2xl animate-float">
+                        <svg class="w-8 h-8 text-[#0FFCBE]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
                     </div>
+                    <div class="absolute -left-4 bottom-1/4 bg-white/10 backdrop-blur-sm p-4 rounded-2xl animate-float-delay">
+                        <svg class="w-8 h-8 text-[#0FFCBE]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 md:py-32 font-media-sans relative overflow-hidden" data-aos="fade-up" data-aos-duration="1000">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-[#0FFCBE]/10 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#106EBE]/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-20">
+                <div class="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
+                    <span class="text-[#0FFCBE] text-sm font-medium tracking-wider">ABOUT ME</span>
+                </div>
+                <h2 class="text-5xl md:text-7xl font-bold text-white">Who I Am</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <!-- Left Column - Image -->
+                <div class="relative" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="relative aspect-[3/4] rounded-2xl overflow-hidden group">
+                        <!-- Decorative Elements -->
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50"></div>
+                        <div class="absolute inset-0 border-2 border-[#0FFCBE]/20 rounded-2xl"></div>
+                        
+                        <!-- Main Image -->
+                        <img src="assets/profile.png" alt="About Me" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+
+                        <!-- Stats Card -->
+                        <div class="absolute -left-6 md:left-0 bottom-8 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 ml-10">
+                            <div class="flex gap-8">
+                                <div class="text-center">
+                                    <h4 class="text-3xl font-bold text-[#0FFCBE]">10+</h4>
+                                    <p class="text-xs text-white/70 mt-1">Projects</p>
+                                </div>
+                                <div class="text-center">
+                                    <h4 class="text-3xl font-bold text-[#0FFCBE]">5+</h4>
+                                    <p class="text-xs text-white/70 mt-1">Clients</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Tech Icons -->
+                        <div class="absolute -right-4 top-1/4 bg-white/10 backdrop-blur-sm p-4 rounded-2xl animate-float">
+                            <svg class="w-8 h-8 text-[#0FFCBE]" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14,17.7H10V16.3h4Zm3-8.3H7v1.4H17Zm-3,3.3H10v1.4h4ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18.6A8.6,8.6,0,1,1,20.6,12,8.6,8.6,0,0,1,12,20.6Z"/>
+                            </svg>
+                        </div>
+
+                        <div class="absolute -left-4 bottom-1/3 bg-white/10 backdrop-blur-sm p-4 rounded-2xl animate-float-delay">
+                            <svg class="w-8 h-8 text-[#0FFCBE]" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12,10.11A1.87,1.87,0,1,1,10.13,12,1.88,1.88,0,0,1,12,10.11M7.37,20c.63.38,2.1-.2,3.82-1.7l.34-.3c-.41-.52-.8-1-1.14-1.5l-.36.29C8.5,18.3,7.5,19.2,7.37,20M19.93,9.08a14.67,14.67,0,0,0-2.55-.47,15,15,0,0,0,.45,2.55h0a15.67,15.67,0,0,0,2.1-2.08m-7.86,5.06c.45.58.85,1.08,1.26,1.53l.33-.29c1.71-1.5,3.18-2.08,3.81-1.7h0c-.13-.8-1.13-1.7-2.66-2.21l-.36-.29c-.41.52-.8,1-1.14,1.5l.34.3c.14.11.27.23.41.34h0Zm5.29-9.11c.17.73-.41,1.78-1.5,3.09l-.3.33c.5.41,1,.8,1.5,1.14l.29-.36c1.5-1.53,2.08-3,1.7-3.81h0c-.8.13-1.7,1.13-2.21,2.66l-.29.36c.52.41,1,.8,1.5,1.14l.33-.3c.14-.16.28-.31.41-.47h0ZM12,15.39a3.39,3.39,0,1,0-3.39-3.39A3.39,3.39,0,0,0,12,15.39m0-8.69c2.93,0,5.3,2.37,5.3,5.3s-2.37,5.3-5.3,5.3-5.3-2.37-5.3-5.3,2.37-5.3,5.3-5.3Z"/>
+                            </svg>
+                        </div>
+
+                        <div class="absolute right-1/4 bottom-1/4 bg-white/10 backdrop-blur-sm p-4 rounded-2xl animate-float-delay-2">
+                            <svg class="w-8 h-8 text-[#0FFCBE]" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12,17.56l4.07-1.13.55-6.1H9.38L9.2,8.3h8.7l.2-2.03H5.9l.77,7.03h6.91l-.23,2.58-2.35.63-2.35-.63-.15-1.74H6.5l.3,3.43,5.2,1.43V17.56Z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Content -->
+                <div class="space-y-8" data-aos="fade-left" data-aos-duration="1000">
+                    <h3 class="text-3xl md:text-4xl font-bold text-white leading-tight">
+                        Creating Digital Excellence with 
+                        <span class="text-[#0FFCBE]">Modern Technologies</span>
+                    </h3>
+
+                    <p class="text-lg text-white/70 leading-relaxed">
+                        I'm a passionate and dedicated Front-End Developer based in Lagos, Nigeria. I'm focused on creating clean & user‑friendly web experiences and specialize in building excellent software that improves the lives of those around me. I have a knack for turning complex problems into simple, beautiful and intuitive designs. If you're looking for a developer who can bring your ideas to life, I'm definitely the one for you.
+                    </p>
+                    
+                    <!-- Skills Grid -->
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
+                            <h4 class="text-[#0FFCBE] font-bold mb-4">Frontend Development</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-2">
+                                    <div class="h-1 w-full bg-white/10 rounded-full overflow-hidden">
+                                        <div class="h-full w-[90%] bg-[#0FFCBE] rounded-full"></div>
+                                    </div>
+                                    <span class="text-sm text-white/70">90%</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div class="h-1 w-full bg-white/10 rounded-full overflow-hidden">
+                                        <div class="h-full w-[85%] bg-[#0FFCBE] rounded-full"></div>
+                                    </div>
+                                    <span class="text-sm text-white/70">85%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
+                            <h4 class="text-[#0FFCBE] font-bold mb-4">UI/UX Design</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-2">
+                                    <div class="h-1 w-full bg-white/10 rounded-full overflow-hidden">
+                                        <div class="h-full w-[95%] bg-[#0FFCBE] rounded-full"></div>
+                                    </div>
+                                    <span class="text-sm text-white/70">95%</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div class="h-1 w-full bg-white/10 rounded-full overflow-hidden">
+                                        <div class="h-full w-[80%] bg-[#0FFCBE] rounded-full"></div>
+                                    </div>
+                                    <span class="text-sm text-white/70">80%</span>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <!-- Technologies -->
+                    <div class="flex flex-wrap gap-4">
+                        <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/70">HTML5</span>
+                        <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/70">CSS3</span>
+                        <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/70">JavaScript</span>
+                        <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/70">React</span>
+                        <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/70">Tailwind</span>
+                        <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/70">MongoDB</span>
+                        <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/70">Firebase</span>
+                        <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/70">Vercel</span>
+                        <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/70">Figma</span>
+                        <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/70">Next.js</span>
+                    </div>
+
+                    <a href="#contact" class="inline-block bg-[#0FFCBE] text-black px-8 py-4 rounded-full text-sm font-medium tracking-wider hover:bg-[#0FFCBE]/80 transition-all transform hover:scale-105">
+                        GET IN TOUCH
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 md:py-32 font-media-sans" data-aos="fade-up" data-aos-duration="1000">
-        <div class="max-w-7xl mx-auto px-4 md:px-8">
+    <section id="services" class="py-20 md:py-32 font-media-sans relative overflow-hidden" data-aos="fade-up" data-aos-duration="1000">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#0FFCBE]/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-[#106EBE]/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
             <!-- Section Header -->
-            <div class="text-center mb-12 md:mb-20">
-                <span class="text-sm font-medium tracking-wider" data-aos="fade-right" data-aos-duration="800">SERVICES</span>
-                <h2 class="text-5xl md:text-7xl font-bold mt-4" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">What I Do</h2>
+            <div class="text-center mb-20">
+                <div class="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
+                    <span class="text-[#0FFCBE] text-sm font-medium tracking-wider">SERVICES</span>
+                </div>
+                <h2 class="text-5xl md:text-7xl font-bold text-white">What I Do</h2>
             </div>
 
             <!-- Services Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Service Card 1 -->
-                <div class="group p-12 rounded-lg border-2 border-black/10 hover:border-black transition-all duration-300">
+                <div class="group p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-[#0FFCBE] transition-all duration-500 hover:-translate-y-2">
                     <div class="space-y-6">
-                        <div class="w-16 h-16 bg-black rounded-lg flex items-center justify-center">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <!-- Icon Container -->
+                        <div class="relative">
+                            <div class="w-16 h-16 bg-[#0FFCBE]/20 rounded-2xl flex items-center justify-center group-hover:bg-[#0FFCBE] transition-colors duration-500">
+                                <svg class="w-8 h-8 text-[#0FFCBE] group-hover:text-black transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
+                            </div>
+                            <div class="absolute -inset-2 border border-[#0FFCBE]/20 rounded-2xl rotate-6 group-hover:rotate-0 transition-transform duration-500"></div>
                         </div>
-                        <h3 class="text-2xl font-bold">Web Development</h3>
-                        <p class="text-black/70 leading-relaxed">
-                            Building responsive and performant websites using modern technologies and best practices.
+
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Web Development</h3>
+                            <p class="text-white/70 leading-relaxed">
+                            Building responsive and well performing websites using modern technologies and best practices.
                         </p>
+                        </div>
+
+                        <!-- Features List -->
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-sm text-white/70">
+                                <svg class="w-5 h-5 text-[#0FFCBE] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Custom Website Development
+                            </li>
+                            <li class="flex items-center text-sm text-white/70">
+                                <svg class="w-5 h-5 text-[#0FFCBE] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Responsive Design
+                            </li>
+                            <li class="flex items-center text-sm text-white/70">
+                                <svg class="w-5 h-5 text-[#0FFCBE] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Performance Optimization
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
                 <!-- Service Card 2 -->
-                <div class="group p-12 rounded-lg border-2 border-black/10 hover:border-black transition-all duration-300">
+                <div class="group p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-[#0FFCBE] transition-all duration-500 hover:-translate-y-2">
                     <div class="space-y-6">
-                        <div class="w-16 h-16 bg-black rounded-lg flex items-center justify-center">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <!-- Icon Container -->
+                        <div class="relative">
+                            <div class="w-16 h-16 bg-[#0FFCBE]/20 rounded-2xl flex items-center justify-center group-hover:bg-[#0FFCBE] transition-colors duration-500">
+                                <svg class="w-8 h-8 text-[#0FFCBE] group-hover:text-black transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                             </svg>
+                            </div>
+                            <div class="absolute -inset-2 border border-[#0FFCBE]/20 rounded-2xl rotate-6 group-hover:rotate-0 transition-transform duration-500"></div>
                         </div>
-                        <h3 class="text-2xl font-bold">UI/UX Design</h3>
-                        <p class="text-black/70 leading-relaxed">
+
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4">UI/UX Design</h3>
+                            <p class="text-white/70 leading-relaxed">
                             Creating intuitive and beautiful user interfaces with focus on user experience.
                         </p>
+                        </div>
+
+                        <!-- Features List -->
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-sm text-white/70">
+                                <svg class="w-5 h-5 text-[#0FFCBE] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                User Interface Design
+                            </li>
+                            <li class="flex items-center text-sm text-white/70">
+                                <svg class="w-5 h-5 text-[#0FFCBE] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                User Experience Design
+                            </li>
+                            <li class="flex items-center text-sm text-white/70">
+                                <svg class="w-5 h-5 text-[#0FFCBE] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Prototyping
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
                 <!-- Service Card 3 -->
-                <div class="group p-12 rounded-lg border-2 border-black/10 hover:border-black transition-all duration-300">
+                <div class="group p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-[#0FFCBE] transition-all duration-500 hover:-translate-y-2">
                     <div class="space-y-6">
-                        <div class="w-16 h-16 bg-black rounded-lg flex items-center justify-center">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <!-- Icon Container -->
+                        <div class="relative">
+                            <div class="w-16 h-16 bg-[#0FFCBE]/20 rounded-2xl flex items-center justify-center group-hover:bg-[#0FFCBE] transition-colors duration-500">
+                                <svg class="w-8 h-8 text-[#0FFCBE] group-hover:text-black transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                             </svg>
+                            </div>
+                            <div class="absolute -inset-2 border border-[#0FFCBE]/20 rounded-2xl rotate-6 group-hover:rotate-0 transition-transform duration-500"></div>
                         </div>
-                        <h3 class="text-2xl font-bold">Performance</h3>
-                        <p class="text-black/70 leading-relaxed">
+
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Performance</h3>
+                            <p class="text-white/70 leading-relaxed">
                             Optimizing website performance for faster load times and better user experience.
                         </p>
+                        </div>
+
+                        <!-- Features List -->
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-sm text-white/70">
+                                <svg class="w-5 h-5 text-[#0FFCBE] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Speed Optimization
+                            </li>
+                            <li class="flex items-center text-sm text-white/70">
+                                <svg class="w-5 h-5 text-[#0FFCBE] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                SEO Implementation
+                            </li>
+                            <li class="flex items-center text-sm text-white/70">
+                                <svg class="w-5 h-5 text-[#0FFCBE] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Performance Monitoring
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -428,161 +697,284 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 md:py-32 font-media-sans" data-aos="fade-up" data-aos-duration="1000">
-        <div class="max-w-7xl mx-auto px-4 md:px-8">
+    <section id="projects" class="py-20 md:py-32 font-media-sans relative overflow-hidden" data-aos="fade-up" data-aos-duration="1000">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#0FFCBE]/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#106EBE]/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
             <!-- Section Header -->
             <div class="text-center mb-20">
-                <span class="text-sm font-medium tracking-wider" data-aos="fade-right" data-aos-duration="800">SELECTED WORK</span>
-                <h2 class="text-5xl md:text-7xl font-bold mt-4 mb-8" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">Latest Projects</h2>
+                <div class="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
+                    <span class="text-[#0FFCBE] text-sm font-medium tracking-wider">LATEST WORK</span>
+                </div>
+                <h2 class="text-5xl md:text-7xl font-bold text-white">Featured Projects</h2>
             </div>
 
             <!-- Projects Grid -->
-            <div class="space-y-32">
-                <!-- Project 1 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div class="order-2 md:order-1 space-y-6" data-aos="fade-right" data-aos-duration="800">
-                        <span class="text-sm tracking-wider text-black/70">01 / WEB DEVELOPMENT</span>
-                        <h3 class="text-4xl font-bold">E-Commerce Website</h3>
-                        <p class="text-black/70 leading-relaxed">
-                            A modern e-commerce platform built with React and Node.js, featuring a seamless shopping experience and intuitive admin dashboard.
-                        </p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="px-4 py-2 bg-black/5 rounded-full text-sm">React</span>
-                            <span class="px-4 py-2 bg-black/5 rounded-full text-sm">Node.js</span>
-                            <span class="px-4 py-2 bg-black/5 rounded-full text-sm">MongoDB</span>
-                        </div>
-                        <a href="#" class="inline-block text-sm font-medium tracking-wider group">
-                            VIEW PROJECT 
-                            <span class="inline-block transition-transform group-hover:translate-x-1">→</span>
-                        </a>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project Card 1 -->
+                <div class="group relative rounded-2xl overflow-hidden" data-aos="fade-up">
+                    <!-- Project Image -->
+                    <div class="aspect-[4/3] relative overflow-hidden">
+                        <img src="assets/passitshot.png" alt="PassIT" 
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/90"></div>
                     </div>
-                    <div class="order-1 md:order-2">
-                        <div class="relative aspect-[4/3] rounded-lg overflow-hidden group">
-                            <img src="assets/project1.jpg" alt="E-Commerce Website" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-black/20 transition-opacity group-hover:opacity-0"></div>
+
+                    <!-- Project Content -->
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 transform translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 delay-100">
+                            <span class="text-[#0FFCBE] text-sm font-medium">01 / WEB DEVELOPMENT</span>
+                            <h3 class="text-2xl font-bold text-white mt-2">PassIT</h3>
+                            <p class="text-white/70 mt-4">A webapp for generating and managing passwords. It is offline and utilises the latest encryption algorithms.</p>
+                            
+                            <!-- Tech Stack -->
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white/70">HTML</span>
+                                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white/70">Tailwind</span>
+                            </div>
+
+                            <!-- Link -->
+                            <a href="https://passit.click/" class="inline-flex items-center text-[#0FFCBE] mt-6 group/link">
+                                <span class="text-sm font-medium">View Project</span>
+                                <svg class="w-4 h-4 ml-2 transform transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div class="order-2 space-y-6" data-aos="fade-right" data-aos-duration="800">
-                        <span class="text-sm tracking-wider text-black/70">02 / UI DESIGN</span>
-                        <h3 class="text-4xl font-bold">Dashboard UI</h3>
-                        <p class="text-black/70 leading-relaxed">
-                            A clean and modern dashboard interface designed for data visualization and analytics, built with Vue.js and Tailwind CSS.
-                        </p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="px-4 py-2 bg-black/5 rounded-full text-sm">Vue.js</span>
-                            <span class="px-4 py-2 bg-black/5 rounded-full text-sm">Tailwind</span>
-                            <span class="px-4 py-2 bg-black/5 rounded-full text-sm">Chart.js</span>
-                        </div>
-                        <a href="#" class="inline-block text-sm font-medium tracking-wider group">
-                            VIEW PROJECT 
-                            <span class="inline-block transition-transform group-hover:translate-x-1">→</span>
-                        </a>
+                <!-- Project Card 2 -->
+                <div class="group relative rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <!-- Project Image -->
+                    <div class="aspect-[4/3] relative overflow-hidden">
+                        <img src="assets/project2.jpg" alt="Dashboard UI" 
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/90"></div>
                     </div>
-                    <div class="order-1">
-                        <div class="relative aspect-[4/3] rounded-lg overflow-hidden group">
-                            <img src="assets/project2.jpg" alt="Dashboard UI" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-black/20 transition-opacity group-hover:opacity-0"></div>
+
+                    <!-- Project Content -->
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 transform translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 delay-100">
+                            <span class="text-[#0FFCBE] text-sm font-medium">02 / UI DESIGN</span>
+                            <h3 class="text-2xl font-bold text-white mt-2">Dashboard UI</h3>
+                            <p class="text-white/70 mt-4">A clean and modern dashboard interface for data visualization.</p>
+                            
+                            <!-- Tech Stack -->
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white/70">Vue.js</span>
+                                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white/70">Tailwind</span>
+                                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white/70">Chart.js</span>
+                            </div>
+
+                            <!-- Link -->
+                            <a href="#" class="inline-flex items-center text-[#0FFCBE] mt-6 group/link">
+                                <span class="text-sm font-medium">View Project</span>
+                                <svg class="w-4 h-4 ml-2 transform transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 3 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div class="order-2 md:order-1 space-y-6" data-aos="fade-right" data-aos-duration="800">
-                        <span class="text-sm tracking-wider text-black/70">03 / MOBILE APP</span>
-                        <h3 class="text-4xl font-bold">Social Media App</h3>
-                        <p class="text-black/70 leading-relaxed">
-                            A cross-platform mobile application built with React Native, featuring real-time messaging and social networking capabilities.
-                        </p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="px-4 py-2 bg-black/5 rounded-full text-sm">React Native</span>
-                            <span class="px-4 py-2 bg-black/5 rounded-full text-sm">Firebase</span>
-                            <span class="px-4 py-2 bg-black/5 rounded-full text-sm">Redux</span>
-                        </div>
-                        <a href="#" class="inline-block text-sm font-medium tracking-wider group">
-                            VIEW PROJECT 
-                            <span class="inline-block transition-transform group-hover:translate-x-1">→</span>
-                        </a>
+                <!-- Project Card 3 -->
+                <div class="group relative rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <!-- Project Image -->
+                    <div class="aspect-[4/3] relative overflow-hidden">
+                        <img src="assets/project3.jpg" alt="Social Media App" 
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/90"></div>
                     </div>
-                    <div class="order-1 md:order-2">
-                        <div class="relative aspect-[4/3] rounded-lg overflow-hidden group">
-                            <img src="assets/project3.jpg" alt="Social Media App" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-black/20 transition-opacity group-hover:opacity-0"></div>
+
+                    <!-- Project Content -->
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 transform translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 delay-100">
+                            <span class="text-[#0FFCBE] text-sm font-medium">03 / MOBILE APP</span>
+                            <h3 class="text-2xl font-bold text-white mt-2">Social Media App</h3>
+                            <p class="text-white/70 mt-4">A cross-platform mobile app with real-time messaging.</p>
+                            
+                            <!-- Tech Stack -->
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white/70">React Native</span>
+                                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white/70">Firebase</span>
+                                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white/70">Redux</span>
+                            </div>
+
+                            <!-- Link -->
+                            <a href="#" class="inline-flex items-center text-[#0FFCBE] mt-6 group/link">
+                                <span class="text-sm font-medium">View Project</span>
+                                <svg class="w-4 h-4 ml-2 transform transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add this after Project Card 3 -->
+                <div class="group relative rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <!-- Project Image -->
+                    <div class="aspect-[4/3] relative overflow-hidden">
+                        <img src="assets/chatgptclone.png" alt="ChatGPT Clone" 
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/90"></div>
+                    </div>
+
+                    <!-- Project Content -->
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 transform translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 delay-100">
+                            <span class="text-[#0FFCBE] text-sm font-medium">04 / AI APPLICATION</span>
+                            <h3 class="text-2xl font-bold text-white mt-2">ChatGPT Clone</h3>
+                            <p class="text-white/70 mt-4">A ChatGPT clone built with React and OpenAI's API. Features include chat history, code highlighting, and markdown support.</p>
+                            
+                            <!-- Tech Stack -->
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white/70">React</span>
+                                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white/70">OpenAI API</span>
+                                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white/70">Tailwind</span>
+                            </div>
+
+                            <!-- Link -->
+                            <a href="https://chat.devolawale.com" class="inline-flex items-center text-[#0FFCBE] mt-6 group/link">
+                                <span class="text-sm font-medium">View Project</span>
+                                <svg class="w-4 h-4 ml-2 transform transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- More Projects Button -->
-            <div class="text-center mt-32">
-                <a href="#" class="inline-block bg-black text-white px-8 py-4 rounded-full text-sm tracking-wider hover:bg-gray-800 transition-colors">
-                    VIEW MORE PROJECTS
+            <div class="text-center mt-16">
+                <a href="#" class="inline-flex items-center gap-2 bg-white/10 hover:bg-[#0FFCBE] text-white hover:text-black px-8 py-4 rounded-full text-sm font-medium tracking-wider transition-all duration-300 backdrop-blur-sm border border-white/20 hover:border-transparent transform hover:scale-105">
+                    <span>View All Projects</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-20 font-media-sans border-t border-black/10">
-        <div class="max-w-7xl mx-auto px-4 md:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
-                <!-- Left Column -->
-                <div class="space-y-8 text-center md:text-left">
-                    <a href="#" class="text-2xl font-bold tracking-wider"><img src="assets/logo.png" alt="" class="w-16 h-16"></a>
-                    <p class="text-black/70 max-w-md mx-auto md:mx-0">
+    <footer class="py-20 font-media-sans relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-[#0FFCBE]/10 rounded-full blur-3xl"></div>
+            <div class="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#106EBE]/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <!-- Main Footer Content -->
+        <div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+            <!-- Footer Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Let's Work Together</h2>
+                <p class="text-white/70 max-w-2xl mx-auto">
+                    Ready to bring your digital vision to life? Let's create something amazing together.
+                </p>
+                <a href="#contact" class="inline-block bg-[#0FFCBE] text-black px-8 py-4 rounded-full text-sm font-medium tracking-wider hover:bg-[#0FFCBE]/80 transition-all transform hover:scale-105 mt-8">
+                    START A PROJECT
+                </a>
+            </div>
+
+            <!-- Footer Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 pt-16 border-t border-white/10">
+                <!-- Brand Column - Center align on mobile -->
+                <div class="space-y-6 md:col-span-2 text-center md:text-left">
+                    <a href="#" class="inline-block">
+                        <img src="assets/logo.png" alt="Logo" class="w-12 h-12 mx-auto md:mx-0">
+                    </a>
+                    <p class="text-white/70 max-w-md mx-auto md:mx-0">
                         A Frontend focused Web Developer building the Frontend of Websites and Web Applications that leads to the success of the overall product.
                     </p>
-                    <div class="flex space-x-6 justify-center md:justify-start">
-                        <a href="https://github.com/codebygreenlight" target="_blank" class="text-black hover:text-black/70 transition-colors">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    <!-- Social Links - Center on mobile -->
+                    <div class="flex gap-4 justify-center md:justify-start">
+                        <a href="https://github.com/codebygreenlight" target="_blank" 
+                            class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-[#0FFCBE] text-white hover:text-black transition-all duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.239 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                             </svg>
                         </a>
-                        <a href="https://www.linkedin.com/in/olawaleadebesin/" target="_blank" class="text-black hover:text-black/70 transition-colors">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <a href="https://www.linkedin.com/in/olawaleadebesin/" target="_blank" 
+                            class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-[#0FFCBE] text-white hover:text-black transition-all duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                             </svg>
                         </a>
-                        <a href="https://x.com/devolawale" target="_blank" class="text-black hover:text-black/70 transition-colors">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <a href="https://x.com/devolawale" target="_blank" 
+                            class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-[#0FFCBE] text-white hover:text-black transition-all duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
                             </svg>
                         </a>
                     </div>
                 </div>
 
-                <!-- Right Column -->
-                <div class="flex flex-col md:flex-row md:justify-end gap-12 md:gap-24 text-center md:text-left">
-                    <!-- Quick Links -->
-                    <div class="space-y-6">
-                        <h4 class="text-lg font-bold">Quick Links</h4>
+                <!-- Quick Links - Center on mobile -->
+                <div class="space-y-6 text-center md:text-left">
+                    <h4 class="text-lg font-bold text-white">Quick Links</h4>
                         <ul class="space-y-4">
-                            <li><a href="#" class="text-black/70 hover:text-black transition-colors">Home</a></li>
-                            <li><a href="#" class="text-black/70 hover:text-black transition-colors">About</a></li>
-                            <li><a href="#" class="text-black/70 hover:text-black transition-colors">Projects</a></li>
-                            <li><a href="#" class="text-black/70 hover:text-black transition-colors">Contact</a></li>
+                        <li>
+                            <a href="#" class="text-white/70 hover:text-[#0FFCBE] transition-colors flex items-center group justify-center md:justify-start">
+                                <span class="w-2 h-2 bg-[#0FFCBE]/50 rounded-full mr-3 transition-transform duration-300 group-hover:scale-150"></span>
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#about" class="text-white/70 hover:text-[#0FFCBE] transition-colors flex items-center group justify-center md:justify-start">
+                                <span class="w-2 h-2 bg-[#0FFCBE]/50 rounded-full mr-3 transition-transform duration-300 group-hover:scale-150"></span>
+                                About
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#services" class="text-white/70 hover:text-[#0FFCBE] transition-colors flex items-center group justify-center md:justify-start">
+                                <span class="w-2 h-2 bg-[#0FFCBE]/50 rounded-full mr-3 transition-transform duration-300 group-hover:scale-150"></span>
+                                Services
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#projects" class="text-white/70 hover:text-[#0FFCBE] transition-colors flex items-center group justify-center md:justify-start">
+                                <span class="w-2 h-2 bg-[#0FFCBE]/50 rounded-full mr-3 transition-transform duration-300 group-hover:scale-150"></span>
+                                Projects
+                            </a>
+                        </li>
                         </ul>
                     </div>
 
-                    <!-- Contact Info -->
-                    <div class="space-y-6">
-                        <h4 class="text-lg font-bold">Contact Info</h4>
+                <!-- Contact Info - Center on mobile -->
+                <div class="space-y-6 text-center md:text-left">
+                    <h4 class="text-lg font-bold text-white">Contact Info</h4>
                         <ul class="space-y-4">
-                            <li class="text-black/70">Lagos, Nigeria</li>
-                            <li><a href="mailto:contact@example.com" class="text-black/70 hover:text-black transition-colors">contact@example.com</a></li>
+                        <li class="flex items-center text-white/70 justify-center md:justify-start">
+                            <svg class="w-5 h-5 text-[#0FFCBE] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            Lagos, Nigeria
+                        </li>
+                        <li>
+                            <a href="mailto:contact@example.com" class="flex items-center text-white/70 hover:text-[#0FFCBE] transition-colors justify-center md:justify-start">
+                                <svg class="w-5 h-5 text-[#0FFCBE] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                                contact@example.com
+                            </a>
+                        </li>
                         </ul>
-                    </div>
                 </div>
             </div>
 
             <!-- Copyright -->
-            <div class="mt-20 pt-8 border-t border-black/10 text-center text-black/70">
-                <p>© 2025 DEVOLAWALE. All rights reserved.</p>
-        </div>
+            <div class="mt-16 pt-8 border-t border-white/10 text-center">
+                <p class="text-white/70">© 2025 DEVOLAWALE. All rights reserved.</p>
+            </div>
     </div>
     </footer>
 
