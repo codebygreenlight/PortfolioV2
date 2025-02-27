@@ -282,11 +282,23 @@
 
         <div class="max-w-7xl mx-auto px-4 md:px-8 relative">
             <div class="flex justify-between items-center">
-                <!-- Logo -->
-                <div class="flex-shrink-0">
+                <!-- Mobile menu button - Move to start -->
+                <div class="md:hidden">
+                    <button type="button" class="relative group p-2" id="mobile-menu-button">
+                        <div class="relative flex overflow-hidden items-center justify-center w-8 h-8">
+                            <div class="flex flex-col justify-between w-6 h-5 transform transition-all duration-300 origin-center overflow-hidden group-hover:text-[#0FFCBE]">
+                                <div class="bg-white h-[2px] w-6 transform transition-all duration-300 origin-left group-hover:bg-[#0FFCBE]"></div>
+                                <div class="bg-white h-[2px] w-6 transform transition-all duration-300 group-hover:bg-[#0FFCBE]"></div>
+                                <div class="bg-white h-[2px] w-6 transform transition-all duration-300 origin-left group-hover:bg-[#0FFCBE]"></div>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Logo - Center -->
+                <div class="flex-1 flex justify-center md:justify-start">
                     <a href="#" class="flex items-center space-x-3 group">
-                        <!-- <img src="assets/logo.png" alt="Logo" class="w-10 h-10 transform transition-transform group-hover:scale-110"> -->
-                        <span class="text-white font-bold text-xl tracking-wider hidden md:block">
+                        <span class="text-white font-bold text-xl tracking-wider">
                             DEVO<span class="text-[#0FFCBE]">LAWALE</span>
                         </span>
                     </a>
@@ -325,57 +337,47 @@
                     </a>
                 </div>
 
-                <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button type="button" class="relative group p-2" id="mobile-menu-button">
-                        <div class="relative flex overflow-hidden items-center justify-center w-8 h-8">
-                            <div class="flex flex-col justify-between w-6 h-5 transform transition-all duration-300 origin-center overflow-hidden group-hover:text-[#0FFCBE]">
-                                <div class="bg-white h-[2px] w-6 transform transition-all duration-300 origin-left group-hover:bg-[#0FFCBE]"></div>
-                                <div class="bg-white h-[2px] w-6 transform transition-all duration-300 group-hover:bg-[#0FFCBE]"></div>
-                                <div class="bg-white h-[2px] w-6 transform transition-all duration-300 origin-left group-hover:bg-[#0FFCBE]"></div>
-                            </div>
-                        </div>
-                    </button>
-                </div>
-                </div>
-            </div>
-
-            <!-- Mobile Menu -->
-            <div class="mobile-menu md:hidden">
-            <button class="close-button text-[#0FFCBE] hover:text-[#0FFCBE]/80 p-2" id="close-menu-button">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            <div class="flex flex-col space-y-6 mt-8">
-                <a href="#" class="text-white hover:text-[#0FFCBE] text-lg font-medium tracking-wider transition-colors duration-300 flex items-center gap-3">
-                    <span class="w-2 h-2 bg-[#0FFCBE]/50 rounded-full"></span>
-                    HOME
-                </a>
-                <a href="#about" class="text-white hover:text-[#0FFCBE] text-lg font-medium tracking-wider transition-colors duration-300 flex items-center gap-3">
-                    <span class="w-2 h-2 bg-[#0FFCBE]/50 rounded-full"></span>
-                    ABOUT
-                </a>
-                <a href="#services" class="text-white hover:text-[#0FFCBE] text-lg font-medium tracking-wider transition-colors duration-300 flex items-center gap-3">
-                    <span class="w-2 h-2 bg-[#0FFCBE]/50 rounded-full"></span>
-                    SERVICES
-                </a>
-                <a href="#projects" class="text-white hover:text-[#0FFCBE] text-lg font-medium tracking-wider transition-colors duration-300 flex items-center gap-3">
-                    <span class="w-2 h-2 bg-[#0FFCBE]/50 rounded-full"></span>
-                    PROJECTS
-                </a>
-                <a href="mailto:olawale@greenlightgadgets.ng" class="inline-flex items-center bg-[#0FFCBE] text-black px-6 py-3 rounded-full text-sm font-medium tracking-wider hover:bg-[#0FFCBE]/80 transition-all duration-300 gap-2 w-fit">
-                        HIRE ME
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                    </svg>
-                    </a>
+                <!-- Empty div for mobile to maintain spacing -->
+                <div class="w-8 md:hidden"></div>
             </div>
         </div>
     </nav>
 
     <!-- Add overlay div after nav -->
     <div class="menu-overlay md:hidden"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu md:hidden">
+        <button class="close-button text-[#0FFCBE] hover:text-[#0FFCBE]/80 p-2" id="close-menu-button">
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <div class="flex flex-col space-y-6 mt-8">
+            <a href="#" class="text-white hover:text-[#0FFCBE] text-lg font-medium tracking-wider transition-colors duration-300 flex items-center gap-3">
+                <span class="w-2 h-2 bg-[#0FFCBE]/50 rounded-full"></span>
+                HOME
+            </a>
+            <a href="#about" class="text-white hover:text-[#0FFCBE] text-lg font-medium tracking-wider transition-colors duration-300 flex items-center gap-3">
+                <span class="w-2 h-2 bg-[#0FFCBE]/50 rounded-full"></span>
+                ABOUT
+            </a>
+            <a href="#services" class="text-white hover:text-[#0FFCBE] text-lg font-medium tracking-wider transition-colors duration-300 flex items-center gap-3">
+                <span class="w-2 h-2 bg-[#0FFCBE]/50 rounded-full"></span>
+                SERVICES
+            </a>
+            <a href="#projects" class="text-white hover:text-[#0FFCBE] text-lg font-medium tracking-wider transition-colors duration-300 flex items-center gap-3">
+                <span class="w-2 h-2 bg-[#0FFCBE]/50 rounded-full"></span>
+                PROJECTS
+            </a>
+            <a href="mailto:olawale@greenlightgadgets.ng" class="inline-flex items-center bg-[#0FFCBE] text-black px-6 py-3 rounded-full text-sm font-medium tracking-wider hover:bg-[#0FFCBE]/80 transition-all duration-300 gap-2 w-fit">
+                HIRE ME
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+            </a>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <div class="min-h-screen relative overflow-hidden font-media-sans">
