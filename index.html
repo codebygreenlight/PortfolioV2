@@ -91,39 +91,57 @@
             transition: opacity 0.5s ease-out;
         }
 
-        .loader {
-            width: 48px;
-            height: 48px;
-            border: 3px solid #FFFFFF;
-            border-radius: 50%;
-            display: inline-block;
-            position: relative;
-            box-sizing: border-box;
-            animation: rotation 1s linear infinite;
+        .logo-loader {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
         }
 
-        .loader::after {
-            content: '';  
-            box-sizing: border-box;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 3px solid transparent;
-            border-bottom-color: #FFFFFF;
+        .loading-bar {
+            width: 200px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
         }
 
-        @keyframes rotation {
-            0% { transform: rotate(0deg) }
-            100% { transform: rotate(360deg) }
+        .loading-progress {
+            width: 0;
+            height: 100%;
+            background: #0FFCBE;
+            animation: progress 1.5s ease-in-out forwards;
         }
 
+        @keyframes progress {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 0.5s ease-out forwards;
+        }
+
+        /* Update the fade out animation */
         .fade-out {
             opacity: 0;
             pointer-events: none;
+            transition: opacity 0.5s ease-out;
         }
 
         /* Typewriter effect */
@@ -268,11 +286,158 @@
             animation: float 3s ease-in-out infinite;
             animation-delay: 1s;
         }
+
+        .jumping-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .jumping-text span {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            margin: 0 2px;
+            animation: jump 1s ease-in-out infinite;
+            animation-delay: calc(0.1s * var(--i));
+        }
+
+        @keyframes jump {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .plug-animation {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .socket {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .socket-holes {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 20px;
+        }
+
+        .hole {
+            width: 12px;
+            height: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+        }
+
+        .plug {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background: #0FFCBE;
+            border-radius: 10px;
+            animation: plug-in 2s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .plug-pins {
+            display: flex;
+            gap: 20px;
+        }
+
+        .pin {
+            width: 8px;
+            height: 8px;
+            background: #333;
+            border-radius: 50%;
+        }
+
+        .light-bulb {
+            position: absolute;
+            top: -80px;
+            width: 60px;
+            height: 60px;
+            color: rgba(255, 255, 255, 0.2);
+            transition: color 0.3s ease;
+        }
+
+        .light-bulb.on {
+            color: #0FFCBE;
+            filter: drop-shadow(0 0 20px #0FFCBE);
+        }
+
+        @keyframes plug-in {
+            0%, 100% {
+                transform: translateX(60px);
+            }
+            50% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Update the existing loading bar styles */
+        .loading-bar {
+            width: 200px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+
+        .loading-progress {
+            width: 0;
+            height: 100%;
+            background: #0FFCBE;
+            animation: progress 1.5s ease-in-out forwards;
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-[#106EBE] via-[#0B9CBE] to-[#0FFCBE] min-h-screen">
     <div class="loader-wrapper">
-        <span class="loader"></span>
+        <div class="logo-loader">
+            <div class="plug-animation">
+                <div class="socket">
+                    <div class="socket-holes">
+                        <div class="hole"></div>
+                        <div class="hole"></div>
+                    </div>
+                </div>
+                <div class="plug">
+                    <div class="plug-pins">
+                        <div class="pin"></div>
+                        <div class="pin"></div>
+                    </div>
+                </div>
+                <div class="light-bulb">
+                    <svg class="bulb" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7zM9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
     </div>
 
     <!-- Navigation -->
@@ -1046,11 +1211,35 @@
             anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
         });
 
-        // Loading screen
+        // Add this to control the light bulb animation
         window.addEventListener('load', () => {
+            const lightBulb = document.querySelector('.light-bulb');
+            const plug = document.querySelector('.plug');
+
+            // Toggle light bulb on plug movement
+            plug.addEventListener('animationupdate', () => {
+                const plugRect = plug.getBoundingClientRect();
+                if (plugRect.x < window.innerWidth / 2) {
+                    lightBulb.classList.add('on');
+                } else {
+                    lightBulb.classList.remove('on');
+                }
+            });
+
+            // Initial animation
+            setInterval(() => {
+                const plugRect = plug.getBoundingClientRect();
+                if (plugRect.x < window.innerWidth / 2) {
+                    lightBulb.classList.add('on');
+                } else {
+                    lightBulb.classList.remove('on');
+                }
+            }, 100);
+
+            // Fade out after loading - increased from 1500 to 3000 milliseconds
             setTimeout(() => {
                 document.querySelector('.loader-wrapper').classList.add('fade-out');
-            }, 1500);
+            }, 3000); // Changed to 3 seconds
         });
 
         // Mobile menu functionality
