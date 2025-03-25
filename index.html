@@ -69,6 +69,12 @@
     </script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY");
+        })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
         .outline-text {
@@ -1095,12 +1101,60 @@
             <!-- Footer Header -->
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Let's Work Together</h2>
-                <p class="text-white/70 max-w-2xl mx-auto">
+                <p class="text-white/70 max-w-2xl mx-auto mb-8">
                     Ready to bring your digital vision to life? Let's create something amazing together.
                 </p>
-                <a href="https://wa.me/+2347026560253?text=Hello%20Olawale,%20I'm%20interested%20in%20starting%20a%20project%20with%20you." target="_blank" class="inline-block bg-[#0FFCBE] text-black px-8 py-4 rounded-full text-sm font-medium tracking-wider hover:bg-[#0FFCBE]/80 transition-all transform hover:scale-105 mt-8">
-                    START A PROJECT
-                </a>
+                
+                <!-- Contact Form -->
+                <div class="max-w-2xl mx-auto bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+                    <!-- Success Message (Hidden by default) -->
+                    <div id="successMessage" class="hidden text-center space-y-4">
+                        <div class="w-16 h-16 bg-[#0FFCBE]/20 rounded-full flex items-center justify-center mx-auto">
+                            <svg class="w-8 h-8 text-[#0FFCBE]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Thank you for your message!</h3>
+                        <p class="text-white/70">I will get back to you as soon as possible.</p>
+                        <button onclick="resetForm()" class="mt-4 text-[#0FFCBE] hover:text-[#0FFCBE]/80 transition-colors">
+                            Send another message
+                        </button>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <form id="contactForm" action="https://formspree.io/f/mgvazegj" method="POST" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label for="name" class="block text-sm font-medium text-white/70">Name</label>
+                                <input type="text" id="name" name="name" required
+                                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[#0FFCBE] transition-colors"
+                                    placeholder="Your name">
+                            </div>
+                            <div class="space-y-2">
+                                <label for="email" class="block text-sm font-medium text-white/70">Email</label>
+                                <input type="email" id="email" name="email" required
+                                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[#0FFCBE] transition-colors"
+                                    placeholder="your@email.com">
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label for="subject" class="block text-sm font-medium text-white/70">Subject</label>
+                            <input type="text" id="subject" name="subject" required
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[#0FFCBE] transition-colors"
+                                placeholder="What's this about?">
+                        </div>
+                        <div class="space-y-2">
+                            <label for="message" class="block text-sm font-medium text-white/70">Message</label>
+                            <textarea id="message" name="message" rows="4" required
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-[#0FFCBE] transition-colors resize-none"
+                                placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-[#0FFCBE] text-black px-8 py-4 rounded-full text-sm font-medium tracking-wider hover:bg-[#0FFCBE]/80 transition-all transform hover:scale-105">
+                            SEND MESSAGE
+                        </button>
+                    </form>
+                </div>
             </div>
 
             <!-- Footer Grid -->
@@ -1202,14 +1256,78 @@
     <script>
         // Initialize AOS with additional options
         AOS.init({
-            offset: 100, // offset (in px) from the original trigger point
-            delay: 0, // values from 0 to 3000, with step 50ms
-            duration: 800, // values from 0 to 3000, with step 50ms
-            easing: 'ease-out-cubic', // default easing for AOS animations
-            once: false, // whether animation should happen only once - while scrolling down
-            mirror: true, // whether elements should animate out while scrolling past them
-            anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+            offset: 100,
+            delay: 0,
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: false,
+            mirror: true,
+            anchorPlacement: 'top-bottom',
         });
+
+        // Form Submission Handling
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        function showSuccessMessage() {
+            contactForm.style.display = 'none';
+            successMessage.classList.remove('hidden');
+        }
+
+        function resetForm() {
+            contactForm.style.display = 'block';
+            successMessage.classList.add('hidden');
+            contactForm.reset();
+        }
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                const originalText = submitButton.textContent;
+                submitButton.textContent = 'SENDING...';
+                submitButton.disabled = true;
+
+                // Create FormData object
+                const formData = new FormData(contactForm);
+                
+                // Log form data for debugging
+                console.log('Form Data:', Object.fromEntries(formData));
+
+                // Submit the form
+                fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    // Log the response status and headers
+                    console.log('Response Status:', response.status);
+                    console.log('Response Headers:', Object.fromEntries(response.headers.entries()));
+                    
+                    if (!response.ok) {
+                        if (response.status === 403) {
+                            throw new Error('Form submission failed. Please check your Formspree configuration.');
+                        }
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Success:', data);
+                    showSuccessMessage();
+                })
+                .catch(error => {
+                    console.error('Error details:', error);
+                    alert('Unable to send message. Please try again later or contact me directly at olawale@greenlightgadgets.ng');
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                });
+            });
+        }
 
         // Add this to control the light bulb animation
         window.addEventListener('load', () => {
