@@ -1,0 +1,32 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://devolawale.com/sitemap.xml
+
+# Disallow admin and private directories
+Disallow: /admin/
+Disallow: /private/
+Disallow: /includes/
+Disallow: /config/
+
+# Allow specific file types
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.ico$
+
+# Crawl-delay to prevent server overload
+Crawl-delay: 10
+
+# Host directive
+Host: https://devolawale.com
+
+# Clean-param directive for tracking parameters
+Clean-param: utm_source&utm_medium&utm_campaign /index.html
+Clean-param: ref /index.html 
