@@ -55,13 +55,13 @@
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://api.fontshare.com/v2/css?f[]=media-sans-extended@400,700,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        'media-sans': ['"Media Sans Extended"', 'sans-serif'],
+                        'roboto': ['Roboto', 'sans-serif'],
                     },
                 }
             }
@@ -80,6 +80,39 @@
         .outline-text {
             -webkit-text-stroke: 1px white;
             text-stroke: 1px white;
+        }
+
+        /* Pattern Styles */
+        .pattern-dots {
+            background-image: radial-gradient(#0FFCBE 2px, transparent 2px);
+            background-size: 30px 30px;
+            opacity: 0.1;
+        }
+
+        .pattern-grid {
+            background-image: linear-gradient(#0FFCBE 1px, transparent 1px),
+                            linear-gradient(90deg, #0FFCBE 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.1;
+        }
+
+        .pattern-lines {
+            background-image: repeating-linear-gradient(45deg, #0FFCBE 2px, transparent 2px, transparent 10px);
+            background-size: 20px 20px;
+            opacity: 0.1;
+        }
+
+        .pattern-circles {
+            background-image: radial-gradient(circle at center, #0FFCBE 2px, transparent 2px);
+            background-size: 20px 20px;
+            opacity: 0.1;
+        }
+
+        .pattern-diamond {
+            background-image: linear-gradient(45deg, #0FFCBE 2px, transparent 2px),
+                            linear-gradient(-45deg, #0FFCBE 2px, transparent 2px);
+            background-size: 20px 20px;
+            opacity: 0.1;
         }
 
         /* Loading Screen Styles */
@@ -104,19 +137,86 @@
             gap: 2rem;
         }
 
-        .loading-bar {
+        .loading-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid transparent;
+            border-radius: 50%;
+            animation: rotate 1.5s linear infinite;
+        }
+
+        .loading-ring:nth-child(1) {
+            border-top-color: #0FFCBE;
+            animation-delay: 0s;
+        }
+
+        .loading-ring:nth-child(2) {
+            border-right-color: #0B9CBE;
+            animation-delay: 0.2s;
+        }
+
+        .loading-ring:nth-child(3) {
+            border-bottom-color: #106EBE;
+            animation-delay: 0.4s;
+        }
+
+        .loading-logo {
+            position: absolute;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .loading-logo span {
+            color: #0FFCBE;
+        }
+
+        .loading-progress {
             width: 200px;
             height: 3px;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 3px;
             overflow: hidden;
+            margin-top: 2rem;
         }
 
-        .loading-progress {
+        .loading-progress-bar {
             width: 0;
             height: 100%;
             background: #0FFCBE;
-            animation: progress 1.5s ease-in-out forwards;
+            animation: progress 1s ease-in-out forwards;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
         }
 
         @keyframes progress {
@@ -414,40 +514,33 @@
             width: 0;
             height: 100%;
             background: #0FFCBE;
-            animation: progress 1.5s ease-in-out forwards;
+            animation: progress 1s ease-in-out forwards;
         }
     </style>
 </head>
 <body class="bg-gradient-to-br from-[#106EBE] via-[#0B9CBE] to-[#0FFCBE] min-h-screen">
+    <!-- Add pattern overlays -->
+    <div class="fixed inset-0 pattern-dots pointer-events-none"></div>
+    <div class="fixed inset-0 pattern-grid pointer-events-none mix-blend-overlay"></div>
+
     <div class="loader-wrapper">
         <div class="logo-loader">
-            <div class="plug-animation">
-                <div class="socket">
-                    <div class="socket-holes">
-                        <div class="hole"></div>
-                        <div class="hole"></div>
-                    </div>
-                </div>
-                <div class="plug">
-                    <div class="plug-pins">
-                        <div class="pin"></div>
-                        <div class="pin"></div>
-                    </div>
-                </div>
-                <div class="light-bulb">
-                    <svg class="bulb" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7zM9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1z"/>
-                    </svg>
+            <div class="loading-container">
+                <div class="loading-ring"></div>
+                <div class="loading-ring"></div>
+                <div class="loading-ring"></div>
+                <div class="loading-logo">
+                    DEVO<span>LAWALE</span>
                 </div>
             </div>
-            <div class="loading-bar">
-                <div class="loading-progress"></div>
+            <div class="loading-progress">
+                <div class="loading-progress-bar"></div>
             </div>
         </div>
     </div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 font-media-sans py-6" data-aos="fade-down" data-aos-duration="1000">
+    <nav class="fixed w-full z-50 font-roboto py-6" data-aos="fade-down" data-aos-duration="1000">
         <!-- Nav Background with Blur -->
         <div class="absolute inset-0 bg-black/10 backdrop-blur-md border-b border-white/10"></div>
 
@@ -497,12 +590,12 @@
 
                 <!-- Hire Me Button (Desktop) -->
                 <div class="hidden md:block">
-                    <a href="#contact" class="group relative inline-flex items-center">
+                    <a href="assets/cv.pdf" download class="group relative inline-flex items-center">
                         <span class="absolute inset-0 bg-[#0FFCBE] rounded-full blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></span>
                         <span class="relative bg-[#0FFCBE] text-black px-6 py-3 rounded-full text-sm font-medium tracking-wider hover:bg-[#0FFCBE]/90 transition-all duration-300 flex items-center gap-2">
-                        HIRE ME
+                        DOWNLOAD CV
                             <svg class="w-4 h-4 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
                             </svg>
                         </span>
                     </a>
@@ -542,16 +635,18 @@
                 PROJECTS
             </a>
             <a href="#contact" class="inline-flex items-center bg-[#0FFCBE] text-black px-6 py-3 rounded-full text-sm font-medium tracking-wider hover:bg-[#0FFCBE]/80 transition-all duration-300 gap-2 w-fit">
-                HIRE ME
+                DOWNLOAD CV
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
                 </svg>
             </a>
         </div>
     </div>
 
     <!-- Hero Section -->
-    <div class="min-h-screen relative overflow-hidden font-media-sans">
+    <div class="min-h-screen relative overflow-hidden font-roboto">
+        <!-- Add pattern overlay to hero section -->
+        <div class="absolute inset-0 pattern-lines pointer-events-none mix-blend-overlay"></div>
         <!-- Background Elements -->
         <div class="absolute inset-0 z-0">
             <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#0FFCBE]/20 rounded-full blur-3xl"></div>
@@ -632,7 +727,9 @@
     </div>
 
     <!-- About Section -->
-    <section id="about" class="py-20 md:py-32 font-media-sans relative overflow-hidden" data-aos="fade-up" data-aos-duration="1000">
+    <section id="about" class="py-20 md:py-32 font-roboto relative overflow-hidden" data-aos="fade-up" data-aos-duration="1000">
+        <!-- Add pattern overlay to about section -->
+        <div class="absolute inset-0 pattern-circles pointer-events-none mix-blend-overlay"></div>
         <!-- Background Elements -->
         <div class="absolute inset-0 z-0">
             <div class="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-[#0FFCBE]/10 rounded-full blur-3xl"></div>
@@ -767,7 +864,9 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 md:py-32 font-media-sans relative overflow-hidden" data-aos="fade-up" data-aos-duration="1000">
+    <section id="services" class="py-20 md:py-32 font-roboto relative overflow-hidden" data-aos="fade-up" data-aos-duration="1000">
+        <!-- Add pattern overlay to services section -->
+        <div class="absolute inset-0 pattern-diamond pointer-events-none mix-blend-overlay"></div>
         <!-- Background Elements -->
         <div class="absolute inset-0 z-0">
             <div class="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#0FFCBE]/10 rounded-full blur-3xl"></div>
@@ -921,7 +1020,9 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 md:py-32 font-media-sans relative overflow-hidden" data-aos="fade-up" data-aos-duration="1000">
+    <section id="projects" class="py-20 md:py-32 font-roboto relative overflow-hidden" data-aos="fade-up" data-aos-duration="1000">
+        <!-- Add pattern overlay to projects section -->
+        <div class="absolute inset-0 pattern-grid pointer-events-none mix-blend-overlay"></div>
         <!-- Background Elements -->
         <div class="absolute inset-0 z-0">
             <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#0FFCBE]/10 rounded-full blur-3xl"></div>
@@ -1089,7 +1190,9 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-20 font-media-sans relative overflow-hidden">
+    <footer class="py-20 font-roboto relative overflow-hidden">
+        <!-- Add pattern overlay to footer -->
+        <div class="absolute inset-0 pattern-dots pointer-events-none mix-blend-overlay"></div>
         <!-- Background Elements -->
         <div class="absolute inset-0 z-0">
             <div class="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-[#0FFCBE]/10 rounded-full blur-3xl"></div>
@@ -1329,35 +1432,12 @@
             });
         }
 
-        // Add this to control the light bulb animation
+        // Add this to control the loading screen
         window.addEventListener('load', () => {
-            const lightBulb = document.querySelector('.light-bulb');
-            const plug = document.querySelector('.plug');
-
-            // Toggle light bulb on plug movement
-            plug.addEventListener('animationupdate', () => {
-                const plugRect = plug.getBoundingClientRect();
-                if (plugRect.x < window.innerWidth / 2) {
-                    lightBulb.classList.add('on');
-                } else {
-                    lightBulb.classList.remove('on');
-                }
-            });
-
-            // Initial animation
-            setInterval(() => {
-                const plugRect = plug.getBoundingClientRect();
-                if (plugRect.x < window.innerWidth / 2) {
-                    lightBulb.classList.add('on');
-                } else {
-                    lightBulb.classList.remove('on');
-                }
-            }, 100);
-
-            // Fade out after loading - increased from 1500 to 3000 milliseconds
+            // Fade out after loading - reduced from 3000 to 1500 milliseconds
             setTimeout(() => {
                 document.querySelector('.loader-wrapper').classList.add('fade-out');
-            }, 3000); // Changed to 3 seconds
+            }, 1500); // Changed to 1.5 seconds
         });
 
         // Mobile menu functionality
