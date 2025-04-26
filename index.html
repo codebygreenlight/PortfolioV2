@@ -1368,6 +1368,26 @@
             anchorPlacement: 'top-bottom',
         });
 
+        // Smooth scrolling without hash in URL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Update URL without hash
+                    history.pushState(null, null, window.location.pathname);
+                }
+            });
+        });
+
         // Form Submission Handling
         const contactForm = document.getElementById('contactForm');
         const successMessage = document.getElementById('successMessage');
